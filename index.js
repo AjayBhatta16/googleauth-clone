@@ -2,7 +2,7 @@ const express = require('express')
 const cors = require('cors')
 const fs = require('fs')
 const requestIp = require('request-ip')
-const https = require('https)
+const https = require('https')
 
 const app = express()
 app.use(cors())
