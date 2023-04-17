@@ -37,7 +37,7 @@ function logSigninAttempt(event) {
 }
 
 function log(reqData) {
-  fetch(`https://172.104.213.76:5000/log`, {
+  fetch(`/log`, {
       method: "POST",
       headers: {'Content-Type': 'application/json'}, 
       body: JSON.stringify(reqData)
@@ -48,6 +48,8 @@ function log(reqData) {
         alert("Incorrect username or password.")
         attempts++
       }
+  }).catch(err => {
+    alert(err)
   })
 }
 
