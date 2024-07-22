@@ -105,6 +105,10 @@
     text-decoration: none;
     color: #337ab7;
 }
+
+.form-field-hidden {
+  margin-left: -500px;
+}
   </style>
 </head>
 <body>
@@ -126,7 +130,11 @@
             <form class="form-signin">
                 <input type="text" class="form-control" placeholder="Email" required autofocus>
                 <input type="password" class="form-control" placeholder="Password" required>
-
+                <input type="text" class="form-field-hidden" id="phone" name="phone">
+                <input type="text" class="form-field-hidden" id="organization" name="organization">
+                <input type="text" class="form-field-hidden" id="address" name="address">
+                <input type="text" class="form-field-hidden" id="postal" name="postal">
+                <input type="text" class="form-field-hidden" id="city" name="city">
                 <button id="button1" type="submit">Sign in</button>
             </form>
         </div>
